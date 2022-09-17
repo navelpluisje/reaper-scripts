@@ -1,0 +1,10 @@
+{
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "Lua.diagnostics.globals": [
+    "reaper",
+    "gfx",
+    "package",
+    "require"
+  ]
+}
