@@ -40,5 +40,6 @@ luac.out
 *.hex
 
 .env
+node_modules
 
 
