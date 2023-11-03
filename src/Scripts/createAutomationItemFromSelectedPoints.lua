@@ -1,6 +1,6 @@
 --[[
   Create automation item from selected envelope points
-  Author: Erwin Goossen
+  @author: Erwin Goossen
 --]]
 local function speak(str, showAlert)
   showAlert = showAlert or false;
@@ -16,6 +16,7 @@ local function main()
   local nbPoints = reaper.CountEnvelopePoints(TrackEnvelope);
   local startTime = 0;
   local endTime = 0;
+  local lastTime = 0;
   local inSelection = false;
 
   for i = 0, nbPoints - 1, 1 do
@@ -26,8 +27,13 @@ local function main()
     end
     if (inSelection and retval and not selected) then
       inSelection = false;
-      endTime = time;
+      endTime = lastTime;
     end
+    lastTime = time;
+  end
+
+  if (inSelection and endTime == 0) then
+    endTime = lastTime;
   end
 
   if (endTime > 0) then
@@ -39,4 +45,6 @@ local function main()
   end
 end
 
-main();
+reaper.Undo_BeginBlock()
+main()
+reaper.Undo_EndBlock('Create automationItem', -1)
