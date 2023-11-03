@@ -1,7 +1,7 @@
 {
   "name": "reaper-scripts",
   "version": "0.0.1",
-  "description": "Set of LUA REAPER script for sveral purposes and persons",
+  "description": "Set of LUA REAPER script for several purposes and persons",
   "main": "index.js",
   "scripts": {
     "dev": "./scripts/build.mjs dev",

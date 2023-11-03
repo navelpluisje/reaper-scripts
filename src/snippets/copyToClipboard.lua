@@ -1,3 +1,6 @@
+--- Copy the given text to the clipboard
+---@param text string The text to copy to the clipboard
+---@return boolean
 local function copyToClipboard(text)
   -- Check if the operating system supports the 'pbcopy' command (MacOS)
   if os.execute("type pbcopy >/dev/null 2>&1") then

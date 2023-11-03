@@ -49,13 +49,4 @@ if (args._.includes('build')) {
 
 
   console.log('GO ONNNNNN')
-  // const zipSrc = async () => {
-
-  //   await zip(
-  //     path.join(process.cwd(), 'src'),
-  //     path.join(process.cwd(), 'src', 'out', 'reasouns-faderport.zip'),
-  //   );
-  // }
-
-  // zipSrc();
 }
