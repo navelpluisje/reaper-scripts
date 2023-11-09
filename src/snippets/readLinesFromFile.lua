@@ -9,3 +9,5 @@ local function readLinesFromFile(filename)
 
   return lines;
 end
+
+return readLinesFromFile;

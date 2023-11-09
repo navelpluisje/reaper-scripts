@@ -30,3 +30,5 @@ local function GetSelectedAction(callback)
 
   handleActionPane()
 end
+
+return GetSelectedAction;

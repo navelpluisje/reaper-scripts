@@ -1,21 +1,6 @@
 -- v0.0.2
-local function round(number)
-  local rest = number % 1;
-  if (rest < 0.5) then
-    return math.floor(number);
-  else
-    return math.ceil(number);
-  end
-end
-
-local function speak(str, showAlert)
-  showAlert = showAlert or false;
-  if reaper.osara_outputMessage then
-    reaper.osara_outputMessage(str);
-  elseif (showAlert) then
-    reaper.MB(str, 'Script message', 0);
-  end
-end
+local round = require('round');
+local speak = require('speak');
 
 local function getFxData(trackId, fxId, paramId)
   trackId = trackId or 0;

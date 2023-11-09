@@ -2,18 +2,10 @@
   Add ReaComp to given track and add sidechain routing to selected tracks
   @author: Erwin Goossen
 --]]
-
-local function speak(str, showAlert)
-  showAlert = showAlert or false;
-  if reaper.osara_outputMessage then
-    reaper.osara_outputMessage(str);
-  elseif (showAlert) then
-    reaper.MB(str, 'Script message', 0);
-  end
-end
+local speak = require('speak');
 
 local function showError(message)
-  speak(message);
+  speak(message, true);
 end
 
 local function getTrackByName(value)

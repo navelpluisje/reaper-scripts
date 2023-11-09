@@ -11,3 +11,5 @@ local function speak(message, showAlert)
     reaper.MB(message, 'Script message', 0);
   end
 end
+
+return speak;

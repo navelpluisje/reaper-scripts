@@ -2,14 +2,7 @@
   Create automation item from selected envelope points
   @author: Erwin Goossen
 --]]
-local function speak(str, showAlert)
-  showAlert = showAlert or false;
-  if reaper.osara_outputMessage then
-    reaper.osara_outputMessage(str);
-  elseif (showAlert) then
-    reaper.MB(str, 'Script message', 0);
-  end
-end
+local speak = require('speak');
 
 local function main()
   local TrackEnvelope = reaper.GetSelectedTrackEnvelope(0);
@@ -39,9 +32,9 @@ local function main()
   if (endTime > 0) then
     local st, et = reaper.GetSet_LoopTimeRange2(0, true, false, startTime, endTime, false)
     local result = reaper.InsertAutomationItem(TrackEnvelope, -1, startTime, endTime - startTime);
-    speak('Automation item is created');
+    speak('Automation item is created', false);
   else
-    speak('There were no selected envelope points');
+    speak('There were no selected envelope points', false);
   end
 end
 

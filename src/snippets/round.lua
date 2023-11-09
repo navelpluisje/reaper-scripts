@@ -9,3 +9,5 @@ local function round(number)
     return math.ceil(number);
   end
 end
+
+return round;

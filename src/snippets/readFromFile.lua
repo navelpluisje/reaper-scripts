@@ -8,3 +8,5 @@ local function readFromFile(filename)
 
   return content;
 end
+
+return readFromFile
