@@ -64,12 +64,15 @@ if (args._.includes('build')) {
   console.log(chalk.blue('Build for Release'));
   console.log(chalk.blue('================================================================================\n'));
 
+  console.log(chalk.green(`${new Date().toISOString()}: `) + chalk.green(` Build started.`));
+
   const folder = path.join(process.cwd(), 'src', 'Scripts');
   const distFolder = path.join(process.cwd(), 'dist');
   const zipFolder = path.join(process.cwd(), 'out');
   const files = fs.readdirSync(folder);
 
   for (const file in files) {
+    console.log(chalk.green(`${new Date().toISOString()}: `) + chalk.yellow(files[file]) + chalk.green(` created.`));
     const content = bundle(path.join(folder, files[file]), {
       paths: ['./src/snippets/?.lua'],
     });
@@ -77,10 +80,11 @@ if (args._.includes('build')) {
   }
 
   if (!fs.existsSync(path.join(process.cwd(), 'out'))) {
+    console.log(chalk.green(`${new Date().toISOString()}: `) + chalk.green(` create output folder.`));
     fs.mkdirSync(path.join(process.cwd(), 'out'), {recursive: true});
   }
 
+  console.log(chalk.green(`${new Date().toISOString()}: `) + chalk.green(` compressing the files.`));
   zip(path.join(distFolder), path.join(zipFolder, 'navelpluisje-reaper-scripts.zip'));
-
-  console.log('GO ONNNNNN')
+  console.log(chalk.green(`${new Date().toISOString()}: `) + chalk.green(` Build finished.`));
 }
